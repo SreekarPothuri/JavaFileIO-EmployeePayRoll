@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class NIOFileAPITest {
 
-	private static String HOME = System.getProperty("F:\\BridgeLabz Fellowship Program\\Files");
+	private static String HOME = System.getProperty("user.home");
 	private static String PLAY_WITH_NIO = "TempPlayGround";
 
 	@Test
