@@ -34,11 +34,22 @@ public class EmployeePayRollService {
 		System.out.println("Employee details added!!");
 	}
 
-	void writeEmpPayRollData(IOService ioService) {
+	public void writeEmpPayRollData(IOService ioService) {
 		if (ioService.equals(com.blz.employeepayroll.EmployeePayRollService.IOService.CONSOLE_IO))
 			System.out.println("Employee Payroll to Details : " + employeePayrollList);
 		if (ioService.equals(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO))
 			new EmployeePayRollFileIOService().writeData(employeePayrollList);
+	}
+	
+	public void printData(IOService ioService) {
+		if (ioService.equals(IOService.FILE_IO))
+			new EmployeePayRollFileIOService().printData();
+	}
+
+	public long countEntries(IOService ioService) {
+		if (ioService.equals(IOService.FILE_IO))
+			return new EmployeePayRollFileIOService().countEntries();
+		return 0;
 	}
 	
 	public static void main(String[] args) {
