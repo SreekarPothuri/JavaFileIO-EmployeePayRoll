@@ -13,6 +13,7 @@ public class EmployeePayRollService {
 	private List<EmployeePayRoll> employeePayrollList;
 
 	public EmployeePayRollService() {
+		super();
 	}
 
 	public EmployeePayRollService(List<EmployeePayRoll> employeePayrollList) {
@@ -33,15 +34,18 @@ public class EmployeePayRollService {
 		System.out.println("Employee details added!!");
 	}
 
-	private void writeEmpPayRollData() {
-		System.out.println("\nWriting Employee Payroll Roaster to Console\n" + employeePayrollList);
+	void writeEmpPayRollData(IOService ioService) {
+		if (ioService.equals(com.blz.employeepayroll.EmployeePayRollService.IOService.CONSOLE_IO))
+			System.out.println("Employee Payroll to Details : " + employeePayrollList);
+		if (ioService.equals(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO))
+			new EmployeePayRollFileIOService().writeData(employeePayrollList);
 	}
-
+	
 	public static void main(String[] args) {
 		ArrayList<EmployeePayRoll> employeePayrollList = new ArrayList<>();
 		EmployeePayRollService employeePayRollService = new EmployeePayRollService(employeePayrollList);
 		Scanner consoleInputReader = new Scanner(System.in);
 		employeePayRollService.readEmpPayRollData(consoleInputReader);
-		employeePayRollService.writeEmpPayRollData();
+		employeePayRollService.writeEmpPayRollData(IOService.CONSOLE_IO);
 	}
 }
