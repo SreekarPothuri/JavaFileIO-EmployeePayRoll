@@ -10,8 +10,8 @@ public class EmployeePayRollServiceTest {
 
 	@Test
 	public void givenTwoEmloyeesDetails_WrittenToFile_ShouldMatchWithEntries() {
-		EmployeePayRoll[] arrayofEmps = { new EmployeePayRoll(1, "James", 25000.0),
-				new EmployeePayRoll(2, "Mickey", 50000.0) };
+		EmployeePayRoll[] arrayofEmps = { new EmployeePayRoll(1, "Siva", 25000.0),
+				new EmployeePayRoll(2, "Srinu", 50000.0) };
 		EmployeePayRollService empPayrollService;
 		empPayrollService = new EmployeePayRollService(Arrays.asList(arrayofEmps));
 		empPayrollService.writeEmpPayRollData(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
