@@ -15,10 +15,17 @@ public class EmployeePayRollServiceTest {
 				new EmployeePayRoll(2, "Srinu", 50000.0) };
 		EmployeePayRollService empPayrollService;
 		empPayrollService = new EmployeePayRollService(Arrays.asList(arrayofEmps));
-		empPayrollService.writeEmpPayRollData(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
-		empPayrollService.printData(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
-		long entries = empPayrollService.countEntries(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
+		empPayrollService.writeEmpPayRollData(EmployeePayRollService.IOService.FILE_IO);
+		empPayrollService.printData(EmployeePayRollService.IOService.FILE_IO);
+		long entries = empPayrollService.countEntries(EmployeePayRollService.IOService.FILE_IO);
 		Assert.assertEquals(2, entries);
 	}
 
+	@Test
+	public void givenFileOnReadingFromFileShouldMatchEmployeeCount() {
+		EmployeePayRollService empPayrollService = new EmployeePayRollService();
+		empPayrollService.readEmployeePayRollFileData(EmployeePayRollService.IOService.FILE_IO);
+		long entries = empPayrollService.countEntries(EmployeePayRollService.IOService.FILE_IO);
+		Assert.assertEquals(2, entries);
+	}
 }
