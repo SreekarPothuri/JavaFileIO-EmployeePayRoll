@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class EmployeePayRollServiceTest {
@@ -15,6 +16,9 @@ public class EmployeePayRollServiceTest {
 		EmployeePayRollService empPayrollService;
 		empPayrollService = new EmployeePayRollService(Arrays.asList(arrayofEmps));
 		empPayrollService.writeEmpPayRollData(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
+		empPayrollService.printData(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
+		long entries = empPayrollService.countEntries(com.blz.employeepayroll.EmployeePayRollService.IOService.FILE_IO);
+		Assert.assertEquals(2, entries);
 	}
 
 }
